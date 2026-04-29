@@ -1,27 +1,38 @@
 const HomePosts = ({ post }) => {
   return (
-    <div className="w-full flex mt-8 space-x-4">
-      {/* left */}
-      <div className="w-[35%] h-[200px] flex justify-center items-center">
-        <img src={post.photo} alt="" className="h-full w-full object-cover" />
-      </div>
-      <div className="flext flex-col  w-[65%]">
-        <h1 className="text-xl font-bold mb-1 md:mb-2 md:text-2xl ">
-          {post.title}
-        </h1>
-        <div className="flex flex-col sm:flex-row sm:gap-4 mb-2 text-sm font-semibold text-gray-500 sm:items-center justify-between md:mb:4">
-          <p>@{post.username}</p>
-          <div className="flex flex-col sm:flex-row  sm:space-x-2">
-            <p>{new Date(post.updatedAt).toString().slice(0, 15)}</p>
-            <p>{new Date(post.updatedAt).toString().slice(16, 24)}</p>
-          </div>
+    <article className="web3-card group mt-8 w-full rounded-[30px] p-4 md:p-5">
+      <div className="relative z-10 flex flex-col gap-5 md:flex-row md:items-start">
+        <div className="aspect-square w-full overflow-hidden rounded-[24px] border border-white/10 bg-[radial-gradient(circle_at_top,rgba(34,211,238,0.12),rgba(15,23,42,0.92))] p-3 md:w-[240px] md:min-w-[240px]">
+          <img
+            src={post.photo}
+            alt={post.title}
+            className="h-full w-full rounded-[18px] object-contain transition duration-500 group-hover:scale-105"
+          />
         </div>
-        <p className="text-sm text-wrap md:text-lg overflow-hidden">
-          {post.desc.slice(0, 300)}
-          <span className="text-blue-500 text-wrap"> ...Read more</span>
-        </p>
+        <div className="flex w-full flex-col">
+          <div className="mb-3 flex flex-wrap items-center gap-2">
+            <span className="signal-chip">On-chain Read</span>
+            <span className="rounded-full border border-white/10 px-3 py-1 text-xs font-medium text-slate-300">
+              Updated {new Date(post.updatedAt).toString().slice(0, 15)}
+            </span>
+          </div>
+          <h1 className="mb-2 text-2xl font-black tracking-tight text-white md:text-3xl">
+            {post.title}
+          </h1>
+          <div className="mb-4 flex flex-col justify-between gap-3 text-sm font-semibold text-slate-400 sm:flex-row sm:items-center">
+            <p className="text-cyan-300">@{post.username}</p>
+            <div className="flex flex-wrap gap-3">
+              <p>{new Date(post.updatedAt).toString().slice(16, 24)}</p>
+              <p className="text-emerald-300">Signal strength: Fresh</p>
+            </div>
+          </div>
+          <p className="text-sm leading-7 text-slate-300 md:text-base">
+            {post.desc.slice(0, 240)}
+            <span className="ml-1 font-semibold text-cyan-300">Read more</span>
+          </p>
+        </div>
       </div>
-    </div>
+    </article>
   );
 };
 export default HomePosts;
