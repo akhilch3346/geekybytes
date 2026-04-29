@@ -1,6 +1,5 @@
 import axios from "axios";
 import { Link } from "react-router-dom";
-import Footer from "../components/Footer";
 import HomePosts from "../components/HomePosts";
 import Navbar from "../components/Navbar";
 import { url } from "../../url";
@@ -152,7 +151,6 @@ const Home = () => {
         )}
         </section>
       </div>
-      <Footer />
     </>
   );
 };
